@@ -12,6 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
   )
 })
 
+function minmax(x: number): number {
+  if (x > 100) return 100
+  if (x < 1) return 0
+  else return x
+}
+
 function GameContainer() {
   // #region states
   const [health, setHealth] = useState(100)
@@ -46,7 +52,6 @@ function GameContainer() {
   useEffect(() => {
     const interval = setInterval(() => {
       setHealth((prev) => {
-        if (prev > 100) return 100
         updateBar(prev, 'healthBar')
         if (prev <= 1) {
           handleGameover('Weakness')
@@ -57,7 +62,6 @@ function GameContainer() {
       })
       setHunger((prev) => {
         updateBar(prev, 'hungerBar')
-        if (prev > 100) return 100
         if (prev <= 1) {
           handleGameover('Starvation')
           clearInterval(interval)
@@ -66,7 +70,6 @@ function GameContainer() {
         return prev - 1
       })
       setThirst((prev) => {
-        if (prev > 100) return 100
         updateBar(prev, 'thirstBar')
         if (prev <= 1) {
           handleGameover('Dehydration')
@@ -76,7 +79,6 @@ function GameContainer() {
         return prev - 1
       })
       setSleep((prev) => {
-        if (prev > 100) return 100
         updateBar(prev, 'sleepBar')
         if (prev <= 1) {
           handleGameover('Sleep Deprivation')
@@ -86,7 +88,6 @@ function GameContainer() {
         return prev - 1
       })
       setBoredom((prev) => {
-        if (prev > 100) return 100
         updateBar(prev, 'boredomBar')
         if (prev <= 1) {
           handleGameover('Boredom')
@@ -112,13 +113,13 @@ function GameContainer() {
     if (gameover === true) return
     setStickImg('/images/stick/stick-gym.png')
     gymSFX.play()
-    setHealth((x) => x + 25)
-    setThirst((x) => x - 30)
-    setHunger((x) => x - 20)
-    setSleep((x) => x - 20)
+    setHealth((x) => minmax(x + 25))
+    setThirst((x) => minmax(x - 30))
+    setHunger((x) => minmax(x - 20))
+    setSleep((x) => minmax(x - 20))
     setWallet((x) => {
       updateBar(x - 20, 'walletBar')
-      return x - 20
+      return minmax(x - 20)
     })
   }
   function handleHunger() {
@@ -126,11 +127,11 @@ function GameContainer() {
     if (wallet > 0) {
       setStickImg('/images/stick/stick-eat.png')
       biteSFX.play()
-      setHunger((x) => x + 40)
-      setHealth((x) => x + 5)
+      setHunger((x) => minmax(x + 40))
+      setHealth((x) => minmax(x + 5))
       setWallet((x) => {
         updateBar(x - 20, 'walletBar')
-        return x - 20
+        return minmax(x - 20)
       })
     } else {
       errorSFX.play()
@@ -141,12 +142,12 @@ function GameContainer() {
     if (wallet > 0) {
       setStickImg('/images/stick/stick-drink.png')
       slurpSFX.play()
-      setThirst((x) => x + 30)
-      setHealth((x) => x + 5)
-      setSleep((x) => x - 10)
+      setThirst((x) => minmax(x + 30))
+      setHealth((x) => minmax(x + 5))
+      setSleep((x) => minmax(x - 10))
       setWallet((x) => {
         updateBar(x - 10, 'walletBar')
-        return x - 10
+        return minmax(x - 10)
       })
     } else {
       errorSFX.play()
@@ -156,29 +157,29 @@ function GameContainer() {
     if (gameover === true) return
     setStickImg('/images/stick/stick-sleep.png')
     sleepSFX.play()
-    setSleep((x) => x + 50)
-    setHunger((x) => x - 20)
-    setThirst((x) => x - 20)
-    setHealth((x) => x + 10)
+    setSleep((x) => minmax(x + 50))
+    setHunger((x) => minmax(x - 20))
+    setThirst((x) => minmax(x - 10))
+    setHealth((x) => minmax(x + 20))
   }
   function handleBoredom() {
     if (gameover === true) return
     setStickImg('/images/stick/stick-game.png')
     gameSFX.play()
-    setBoredom((x) => x + 50)
-    setHunger((x) => x - 20)
-    setThirst((x) => x - 10)
-    setHealth((x) => x - 20)
+    setBoredom((x) => minmax(x + 50))
+    setHunger((x) => minmax(x - 20))
+    setThirst((x) => minmax(x - 10))
+    setHealth((x) => minmax(x - 20))
   }
   function handleWallet() {
     if (gameover === true) return
     setStickImg('/images/stick/stick-work.png')
     workSFX.play()
-    setThirst((x) => x - 10)
-    setHealth((x) => x - 20)
-    setHunger((x) => x - 30)
-    setSleep((x) => x - 30)
-    setBoredom((x) => x - 30)
+    setThirst((x) => minmax(x - 10))
+    setHealth((x) => minmax(x - 20))
+    setHunger((x) => minmax(x - 30))
+    setSleep((x) => minmax(x - 30))
+    setBoredom((x) => minmax(x - 30))
     setWallet((x) => {
       updateBar(x + 60, 'walletBar')
       return x + 60
