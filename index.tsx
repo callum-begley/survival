@@ -42,7 +42,6 @@ function GameContainer() {
   // #endregion
 
   const RestartGame = () => {
-    console.log('restart')
     gameover = false
     window.location.reload()
   }

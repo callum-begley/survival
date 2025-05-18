@@ -122,4 +122,6 @@ button {
   color: white;
   background: gray;
   transform: translate(0%, 40%);
+  font-weight: 600;
+  text-transform: uppercase;
 }
