@@ -1,5 +1,18 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 800px;
+}
+
+h1 {
+  text-align: center;
+}
+
 #statContainer {
   width: 100px;
+}
+
+#gameContainer {
+  width: 800px;
 }
 
 .bar {
@@ -28,7 +41,84 @@ p {
   transform: translate(10%, -80%);
 }
 
+#statContainer {
+  grid-area: bars;
+  width: 500px;
+  justify-items: center;
+}
+
+#gameBox {
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    'bars buttons'
+    'stick buttons';
+}
+
 #stick {
-  height: 300px;
+  height: auto;
+  width: 500px;
+}
+
+#stickMan {
+  grid-area: stick;
+  width: 500px;
+  justify-content: center;
+}
+
+#buttonDiv {
+  grid-area: buttons;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  width: 300px;
+  height: 100px;
+  margin-bottom: 10px;
+  border: none;
+  background: none;
+  justify-self: center;
+}
+
+#buttonDiv :hover {
+  transform: scale(120%);
+  /* background: gray; */
+}
+
+#buttonDiv :active {
+  transform: scale(120%) rotate(-20deg);
+  /* background: gray; */
+}
+
+#alert {
+  position: absolute;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  font-weight: 800;
+  width: 350px;
+  align-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  transform: translate(10%, 100%);
+}
+.hide {
+  display: none;
+}
+
+.buttonImg {
+  height: 100px;
   width: auto;
+  justify-self: center;
+}
+
+#restartButton {
+  display: block;
+  height: 30px;
+  width: auto;
+  color: white;
+  background: gray;
+  transform: translate(0%, 40%);
 }
