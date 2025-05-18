@@ -110,7 +110,7 @@ function GameContainer() {
 
   function handleHealth() {
     if (gameover === true) return
-    setStickImg('./images/stick/stick-gym.png')
+    setStickImg('/images/stick/stick-gym.png')
     gymSFX.play()
     setHealth((x) => x + 25)
     setThirst((x) => x - 30)
