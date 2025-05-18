@@ -8,7 +8,9 @@
     "build": "vite build",
     "render:build": "npm install && npm run build && npm prune --omit=dev",
     "dev": "vite",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
   },
   "author": "Callum",
   "license": "ISC",
@@ -17,11 +19,15 @@
     "@vitejs/plugin-react": "^4.4.1",
     "@vitejs/plugin-vue": "^5.2.4",
     "eslint": "^9.27.0",
+    "esbuild": "^0.18.18",
     "express": "^5.1.0",
+    "npm-run-all": "^4.1.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router": "^7.6.0",
     "react-router-dom": "^7.6.0",
+     "tsx": "^3.12.7",
+    "typescript": "^5.3.3",
     "vite": "^6.3.5",
     "vue": "^3.5.14"
   },
