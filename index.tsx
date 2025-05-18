@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function GameContainer() {
+  // #region states
   const [health, setHealth] = useState(100)
   const [hunger, setHunger] = useState(100)
   const [thirst, setThirst] = useState(100)
@@ -21,8 +22,9 @@ function GameContainer() {
   const [wallet, setWallet] = useState(100)
   const [survivalTime, setSurvivalTime] = useState(0)
   const [stickImg, setStickImg] = useState('./images/stick/stick.png')
+  // #endregion
 
-  // sound effects
+  // #region sound effects
   const slurpSFX = new Audio('./audio/slurp.mp3')
   const biteSFX = new Audio('./audio/bite.wav')
   const sleepSFX = new Audio('./audio/sleep.wav')
@@ -31,6 +33,7 @@ function GameContainer() {
   const gameSFX = new Audio('./audio/game.wav')
   const errorSFX = new Audio('./audio/error.wav')
   const deathSFX = new Audio('./audio/death.mp3')
+  // #endregion
 
   const RestartGame = () => {
     console.log('restart')
@@ -38,8 +41,8 @@ function GameContainer() {
     window.location.reload()
   }
 
+  // #region Interval
   let toggle = true
-
   useEffect(() => {
     const interval = setInterval(() => {
       setHealth((prev) => {
@@ -103,6 +106,7 @@ function GameContainer() {
 
     return () => clearInterval(interval)
   }, [])
+  // #endregion
 
   function handleHealth() {
     if (gameover === true) return
