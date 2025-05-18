@@ -21,18 +21,18 @@ function GameContainer() {
   const [boredom, setBoredom] = useState(100)
   const [wallet, setWallet] = useState(100)
   const [survivalTime, setSurvivalTime] = useState(0)
-  const [stickImg, setStickImg] = useState('./images/stick/stick.png')
+  const [stickImg, setStickImg] = useState('images/stick/stick.png')
   // #endregion
 
   // #region sound effects
-  const slurpSFX = new Audio('./audio/slurp.mp3')
-  const biteSFX = new Audio('./audio/bite.wav')
-  const sleepSFX = new Audio('./audio/sleep.wav')
-  const gymSFX = new Audio('./audio/gym.mp3')
-  const workSFX = new Audio('./audio/work.wav')
-  const gameSFX = new Audio('./audio/game.wav')
-  const errorSFX = new Audio('./audio/error.wav')
-  const deathSFX = new Audio('./audio/death.mp3')
+  const slurpSFX = new Audio('audio/slurp.mp3')
+  const biteSFX = new Audio('audio/bite.wav')
+  const sleepSFX = new Audio('audio/sleep.wav')
+  const gymSFX = new Audio('audio/gym.mp3')
+  const workSFX = new Audio('audio/work.wav')
+  const gameSFX = new Audio('audio/game.wav')
+  const errorSFX = new Audio('audio/error.wav')
+  const deathSFX = new Audio('audio/death.mp3')
   // #endregion
 
   const RestartGame = () => {
@@ -97,7 +97,7 @@ function GameContainer() {
       })
       setSurvivalTime((x) => x + 1)
       if (toggle) {
-        setStickImg('./images/stick/stick.png')
+        setStickImg('images/stick/stick.png')
         toggle = false
       } else {
         toggle = true
@@ -110,7 +110,7 @@ function GameContainer() {
 
   function handleHealth() {
     if (gameover === true) return
-    setStickImg('/images/stick/stick-gym.png')
+    setStickImg('images/stick/stick-gym.png')
     gymSFX.play()
     setHealth((x) => x + 25)
     setThirst((x) => x - 30)
@@ -124,7 +124,7 @@ function GameContainer() {
   function handleHunger() {
     if (gameover === true) return
     if (wallet > 0) {
-      setStickImg('./images/stick/stick-eat.png')
+      setStickImg('images/stick/stick-eat.png')
       biteSFX.play()
       setHunger((x) => x + 40)
       setHealth((x) => x + 5)
@@ -139,7 +139,7 @@ function GameContainer() {
   function handleThirst() {
     if (gameover === true) return
     if (wallet > 0) {
-      setStickImg('./images/stick/stick-drink.png')
+      setStickImg('images/stick/stick-drink.png')
       slurpSFX.play()
       setThirst((x) => x + 30)
       setHealth((x) => x + 5)
@@ -154,7 +154,7 @@ function GameContainer() {
   }
   function handleSleep() {
     if (gameover === true) return
-    setStickImg('./images/stick/stick-sleep.png')
+    setStickImg('images/stick/stick-sleep.png')
     sleepSFX.play()
     setSleep((x) => x + 50)
     setHunger((x) => x - 20)
@@ -163,7 +163,7 @@ function GameContainer() {
   }
   function handleBoredom() {
     if (gameover === true) return
-    setStickImg('./images/stick/stick-game.png')
+    setStickImg('images/stick/stick-game.png')
     gameSFX.play()
     setBoredom((x) => x + 50)
     setHunger((x) => x - 20)
@@ -172,7 +172,7 @@ function GameContainer() {
   }
   function handleWallet() {
     if (gameover === true) return
-    setStickImg('./images/stick/stick-work.png')
+    setStickImg('images/stick/stick-work.png')
     workSFX.play()
     setThirst((x) => x - 10)
     setHealth((x) => x - 20)
@@ -191,7 +191,7 @@ function GameContainer() {
   function handleGameover(reason: string) {
     gameover = true
     deathSFX.play()
-    setStickImg('./images/stick/stick-dead.png')
+    setStickImg('images/stick/stick-dead.png')
 
     const alertDiv: HTMLElement = document.getElementById('alert')!
     alertDiv.innerHTML = `you died from ${reason}</br> you lived for ${
