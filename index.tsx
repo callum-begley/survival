@@ -49,6 +49,29 @@ function GameContainer() {
   // #region Interval
   let toggle = true
   useEffect(() => {
+    const imagePaths = [
+      '/images/stick/stick.png',
+      '/images/stick/stick-gym.png',
+      '/images/stick/stick-eat.png',
+      '/images/stick/stick-drink.png',
+      '/images/stick/stick-sleep.png',
+      '/images/stick/stick-game.png',
+      '/images/stick/stick-work.png',
+      '/images/stick/stick-dead.png',
+      '/images/stick/stick-gym.png',
+      '/images/food.png',
+      '/images/game.png',
+      '/images/gym.png',
+      '/images/mattress.png',
+      '/images/monster.png',
+      '/images/work.png',
+    ]
+
+    imagePaths.forEach((src) => {
+      const img = new Image()
+      img.src = src
+    })
+
     const interval = setInterval(() => {
       setHealth((prev) => {
         updateBar(prev, 'healthBar')
